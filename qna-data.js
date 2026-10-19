@@ -507,7 +507,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfe7e41wucb",
+   "at": 1792422715153,
+   "n": 43,
+   "name": "",
+   "q": "룩 천천히 올려주떼염",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792422703311
+ "updatedAt": 1792422715153
 };
