@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask Admin</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard Variable',system-ui,sans-serif;color:#2a2a2a;background:linear-gradient(180deg,#f4f4f4,#fff 60%);min-height:100vh;padding:40px 16px}
+button,input,textarea,select{font:inherit;color:inherit}button{cursor:pointer;background:none;border:0}
+.wrap{max-width:760px;margin:0 auto}
+.top{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex-wrap:wrap}
+h1{font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.sub{font-size:8px;letter-spacing:.3em;color:#888;margin-top:8px}
+.btn{height:30px;padding:0 14px;border:1px solid #ccc;border-radius:15px;font-size:11px;font-weight:700;color:#555;background:#fff}
+.btn:hover{border-color:#2a2a2a;color:#111}.btn.pri{background:#2a2a2a;border-color:#2a2a2a;color:#fff}.btn:disabled{opacity:.5}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+.card{background:#fff;border-radius:24px;margin-top:22px;padding:18px 22px 22px;box-shadow:0 26px 40px -20px rgba(0,0,0,.22),0 2px 10px rgba(0,0,0,.04)}
+.tb{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pill{height:28px;padding:0 14px;border-radius:14px;font-size:11px;font-weight:700;color:#777;border:1px solid #e2e2e2}
+.pill.on{background:#2a2a2a;color:#fff;border-color:#2a2a2a}
+.tb input{flex:1;min-width:120px;height:30px;border:1px solid #ddd;border-radius:15px;padding:0 14px;font-size:11px;background:#fafafa;outline:0}
+.row{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px dashed #ddd}
+.row .nb{flex:none;background:#2a2a2a;color:#fff;font-size:8.5px;font-weight:700;border-radius:10px;height:19px;padding:0 9px;display:grid;place-items:center;white-space:nowrap}
+.row .tx{flex:1;min-width:0}.row b{font-size:12.5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.row small{display:block;font-size:10px;color:#999;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .rb{flex:none}.row .rb button{font-size:10px;font-weight:700;color:#777;padding:4px 8px}.row .rb button:hover{color:#111}.row .rb .del:hover{color:#c0392b}
+.empty{font-size:11px;color:#aaa;padding:30px 0;text-align:center}
+.pgn{display:flex;justify-content:center;gap:4px;margin-top:18px}
+.pgn button{min-width:26px;height:26px;padding:0 6px;border-radius:13px;font-size:10px;font-weight:700;color:#777}
+.pgn button.on{background:#2a2a2a;color:#fff}
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;align-items:center;justify-content:center;padding:16px;z-index:30}.mo.on{display:flex}
+.md{background:#fff;border-radius:22px;width:min(480px,100%);max-height:92vh;overflow:auto;padding:20px 22px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.md h2{font-size:16px;font-weight:800;margin-bottom:14px}
+.md label{display:block;font-size:8.5px;font-weight:700;letter-spacing:.2em;color:#777;margin:12px 0 5px}
+.md input,.md textarea{display:block;width:100%;border:1px solid #ddd;border-radius:10px;padding:9px 11px;font-size:12px;background:#fafafa;outline:0}
+.md textarea{min-height:130px;resize:vertical;line-height:1.55}
+.md input:focus,.md textarea:focus{border-color:#2a2a2a}
+.pv{display:none;gap:6px;flex-wrap:wrap;margin-top:8px}.pv.on{display:flex}
+.pv img{width:64px;height:64px;border-radius:8px;object-fit:cover;background:repeating-conic-gradient(#e6e6e6 0 25%,#fff 0 50%) 0 0/12px 12px}
+.mf{display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-top:18px}.mf span{flex:1;font-size:10px;color:#888}
+.hint{font-size:10px;color:#999;line-height:1.6;margin-top:8px}
+.md label.ck{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0;color:#444;margin:16px 0 0;cursor:pointer}
+.md input[type=checkbox]{display:inline-block;width:16px;height:16px;padding:0;flex:none;accent-color:#2a2a2a}
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:#2a2a2a;color:#fff;padding:9px 18px;border-radius:20px;font-size:11px;font-weight:700;display:none;z-index:40}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div><h1>Ask Admin</h1><div class="sub">관리자 · 질문 · 답변</div></div>
+    <div class="acts"><a class="btn" href="qna.html" style="display:inline-grid;place-items:center;text-decoration:none">사이트 ↗</a><button class="btn" id="bSet">연결 설정</button><button class="btn" id="bPro">소개 편집</button><button class="btn pri" id="bNew">+ 올리기</button></div>
+  </div>
+  <div class="card">
+    <div class="tb"><button class="pill on">질문</button><input id="q" placeholder="검색"></div>
+    <div id="list"></div><div id="pg"></div>
+  </div>
+</div>
+<div class="mo" id="mo"><div class="md"><h2 id="mt"></h2><div id="mb"></div><div class="mf"><span id="msg"></span><button class="btn" id="mc">취소</button><button class="btn pri" id="ms">저장</button></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const FILE = 'qna-data.js';
+/* 개인 홈(home-admin)과 같은 연결 정보(home_gh)를 써서, 설정을 다시 안 해도 돼요 */
+const LS = () => { try{ return JSON.parse(localStorage.getItem('home_gh') || '{}'); }catch(e){ return {}; } };
+const ready = () => { const g = LS(); return !!(g.owner && g.repo && g.token); };
+const br = () => LS().branch || 'main';
+const hdr = () => ({Authorization:'Bearer '+LS().token, Accept:'application/vnd.github+json', 'Content-Type':'application/json'});
+const url = p => { const g = LS(); return `https://api.github.com/repos/${g.owner}/${g.repo}/contents/${p}`; };
+const b64 = s => btoa(unescape(encodeURIComponent(s)));
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+let DATA = {profile:{}, items:[]}, SHA = '', Q = '', PG = 1;
+
+async function pull(){
+  const r = await fetch(url(FILE) + `?ref=${br()}&t=${Date.now()}`, {cache:'no-store', headers:hdr()});
+  if (r.status === 404){ DATA = {profile:{}, items:[]}; SHA = ''; return; }
+  if (!r.ok) throw new Error('불러오기 실패 (' + r.status + ') — 연결 설정을 확인해 주세요');
+  const j = await r.json();
+  DATA = JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g,'')))).replace(/^[^{]*/,'').replace(/;\s*$/,''));
+  DATA.items = DATA.items || []; DATA.profile = DATA.profile || {}; SHA = j.sha;
+}
+async function commit(mut, msg){
+  if (!ready()) throw new Error('먼저 연결 설정을 해 주세요');
+  for (let a=0; a<3; a++){
+    await pull(); mut(DATA); DATA.updatedAt = Date.now();
+    const body = {message:msg, content:b64('window.QNA_DATA = ' + JSON.stringify(DATA, null, 1) + ';\n'), branch:br()};
+    if (SHA) body.sha = SHA;
+    const r = await fetch(url(FILE), {method:'PUT', headers:hdr(), body:JSON.stringify(body)});
+    if (r.ok){ SHA = (await r.json()).content.sha; return; }
+    if (r.status !== 409 && r.status !== 422) throw new Error('저장 실패 (' + r.status + ')');
+    await new Promise(res => setTimeout(res, 700));
+  }
+  throw new Error('저장 실패 — 다시 시도해 주세요');
+}
+async function putImg(path, dataUrl){
+  let sha; const g = await fetch(url(path) + `?ref=${br()}&t=${Date.now()}`, {cache:'no-store', headers:hdr()});
+  if (g.ok) sha = (await g.json()).sha;
+  const body = {message:'Upload ' + path, content:dataUrl.split(',')[1], branch:br()}; if (sha) body.sha = sha;
+  const r = await fetch(url(path), {method:'PUT', headers:hdr(), body:JSON.stringify(body)});
+  if (!r.ok) throw new Error('이미지 업로드 실패 (' + r.status + ')');
+}
+const square = (f, s, png) => new Promise(res => { const im = new Image(); im.onload = () => {
+  const m = Math.min(im.width, im.height), c = document.createElement('canvas'); c.width = c.height = s;
+  const x = c.getContext('2d'); x.imageSmoothingQuality = 'high'; x.drawImage(im, (im.width-m)/2, (im.height-m)/2, m, m, 0, 0, s, s);
+  res(png ? c.toDataURL('image/png') : c.toDataURL('image/jpeg', .85)); }; im.src = URL.createObjectURL(f); });
+
+function toast(t){ const e = $('#toast'); e.textContent = t; e.style.display = 'block'; setTimeout(()=>e.style.display='none', 1800); }
+function modal(title, body, save){
+  $('#mt').textContent = title; $('#mb').innerHTML = body; $('#msg').textContent = ''; $('#mo').classList.add('on');
+  $('#ms').onclick = async () => {
+    $('#ms').disabled = true; $('#msg').textContent = '저장 중…';
+    try{ await save(); $('#mo').classList.remove('on'); render(); toast('저장했어요 ✓'); }
+    catch(e){ $('#msg').textContent = e.message || '실패'; }
+    $('#ms').disabled = false;
+  };
+}
+$('#mc').onclick = () => $('#mo').classList.remove('on');
+function picker(id, cur){
+  const box = $('#'+id), pv = box.nextElementSibling; box.files_data = [];
+  const show = a => { pv.classList.toggle('on', a.length>0); pv.innerHTML = a.map(s=>`<img src="${esc(s)}">`).join(''); };
+  if (cur) show([cur]);
+  box.onchange = async () => { const fs = [...box.files]; box.files_data = fs; show(await Promise.all(fs.slice(0,1).map(f=>square(f,128,true)))); };
+}
+
+/* ---------- 올리기 ---------- */
+const F = id => $('#'+id).value.trim();
+function writeModal(it){
+  const e = it || {};
+  modal(it ? '질문 수정' : '질문 올리기', `
+    <label>표시 이름 (선택 · 비우면 "익명 번호"가 자동으로 붙어요)</label><input id="fName" value="${esc(e.name)}" placeholder="비워도 돼요">
+    <label>질문</label><textarea id="fQ" style="min-height:110px">${esc(e.q)}</textarea>
+    <label>답변  ·  ==글자==는 형광펜</label><textarea id="fA" style="min-height:170px">${esc(e.a)}</textarea>
+    <label class="ck"><input type="checkbox" id="fHid" ${e.hidden?'checked':''}>비공개 (방문자에게는 안 보여요)</label>
+    <p class="hint">답변을 비워두면 "아직 답변 전"으로 보여요. 번호는 올린 순서대로 1, 2, 3… 붙어요.</p>`, async () => {
+    if (!F('fQ')) throw new Error('질문을 적어 주세요');
+    const v = {name:F('fName'), q:$('#fQ').value.trim(), a:$('#fA').value.trim(), hidden:$('#fHid').checked};
+    await commit(d => {
+      if (it){ const x = d.items.find(i=>i.id===it.id); if (x) Object.assign(x, v); }
+      else d.items.push({id:uid(), at:Date.now(), n:Math.max(0, ...d.items.map(i=>i.n||0), d.items.length) + 1, ...v});
+    }, it ? 'Edit question' : 'Add question');
+  });
+}
+function proModal(){
+  const p = DATA.profile || {};
+  modal('소개 편집', `
+    <label>제목 (줄바꿈 가능)</label><textarea id="pT" style="min-height:56px">${esc(p.title||'Ask\nMe')}</textarea>
+    <label>부제</label><input id="pS" value="${esc(p.sub||'QUESTIONS · ANSWERS')}">
+    <label>이름</label><input id="pN" value="${esc(p.name)}"><label>핸들</label><input id="pH" value="${esc(p.handle)}">
+    <label>소개글  ·  ==글자==는 형광펜</label><textarea id="pX">${esc(p.text)}</textarea>
+    <label>태그 (쉼표로 구분)</label><input id="pG" value="${esc((p.tags||[]).join(', '))}">
+    <label>프로필 사진 (선택)</label><input type="file" id="fAv" accept="image/*"><div class="pv"></div>
+    <label>파비콘 · 브라우저 탭 아이콘 (선택)</label><input type="file" id="fFv" accept="image/*"><div class="pv"></div>`, async () => {
+    const f = $('#fAv').files_data[0]; let av = p.avatar || '';
+    if (f){ av = 'img/qna-avatar.png?v=' + Date.now(); await putImg('img/qna-avatar.png', await square(f, 300, true)); }
+    const fv = $('#fFv').files_data[0]; let ico = p.favicon || '';
+    if (fv){ ico = await square(fv, 64, true); }
+    const v = {favicon:ico, title:$('#pT').value, sub:F('pS'), name:F('pN'), handle:F('pH'), text:$('#pX').value.trim(), tags:F('pG').split(',').map(s=>s.trim()).filter(Boolean), avatar:av};
+    await commit(d => { d.profile = Object.assign(d.profile||{}, v); }, 'Edit profile');
+  }), picker('fAv', p.avatar), picker('fFv', p.favicon);
+}
+function setModal(){
+  const g = LS();
+  modal('연결 설정', `
+    <label>GitHub 사용자명</label><input id="gO" value="${esc(g.owner)}"><label>저장소 이름</label><input id="gR" value="${esc(g.repo)}">
+    <label>브랜치</label><input id="gB" value="${esc(g.branch||'main')}"><label>토큰 (Contents 읽기/쓰기 권한)</label><input type="password" id="gT" value="${esc(g.token)}" placeholder="github_pat_…">
+    <p class="hint">이 브라우저에만 저장돼요. 개인 홈 관리자와 같은 연결 정보를 같이 써요.</p>`, async () => {
+    localStorage.setItem('home_gh', JSON.stringify({owner:F('gO'), repo:F('gR'), branch:F('gB')||'main', token:F('gT')}));
+    await pull();
+  });
+}
+
+/* ---------- 목록 ---------- */
+const setIco = () => { const f = DATA.profile && DATA.profile.favicon; if (!f) return; let l = document.querySelector('link[rel~=icon]'); if (!l){ l = document.createElement('link'); l.rel = 'icon'; document.head.appendChild(l); } l.type = 'image/png'; l.href = f; };
+function render(){
+  setIco();
+  const num = {}; DATA.items.slice().sort((a,b)=>(a.at||0)-(b.at||0)).forEach((p,i)=>num[p.id] = p.n || i+1);
+  const nameOf = p => p.name || '익명 ' + num[p.id];
+  const q = Q.toLowerCase(), all = DATA.items.slice().sort((a,b)=>(b.at||0)-(a.at||0));
+  const list = all.filter(p => !q || [nameOf(p), p.q, p.a].join(' ').toLowerCase().includes(q));
+  const size = 20, pages = Math.max(1, Math.ceil(list.length/size)); PG = Math.min(PG, pages);
+  const cur = list.slice((PG-1)*size, PG*size);
+  $('#list').innerHTML = !list.length ? `<div class="empty">${ready() ? (all.length ? '검색 결과가 없어요' : '아직 없어요 — 오른쪽 위 "+ 올리기"를 눌러 보세요') : '먼저 "연결 설정"에서 GitHub를 연결해 주세요'}</div>`
+   : cur.map(p=>`<div class="row"><div class="nb">${esc(nameOf(p))}</div><div class="tx"><b>${esc((p.q||'').split('\n')[0])}${p.hidden?' · 비공개':''}</b><small>${p.a ? esc(p.a.replace(/\n/g,' ').slice(0,70)) : '답변 전'}</small></div><div class="rb"><button data-e="${esc(p.id)}">수정</button><button class="del" data-d="${esc(p.id)}">삭제</button></div></div>`).join('');
+  $('#pg').innerHTML = pages<2 ? '' : `<div class="pgn">${Array.from({length:pages},(_,i)=>`<button data-p="${i+1}" class="${i+1===PG?'on':''}">${i+1}</button>`).join('')}</div>`;
+}
+$('#q').oninput = e => { Q = e.target.value.trim(); PG = 1; render(); };
+$('#pg').onclick = e => { const b = e.target.closest('[data-p]'); if (b){ PG = +b.dataset.p; render(); } };
+$('#list').onclick = async e => {
+  const ed = e.target.closest('[data-e]'), dl = e.target.closest('[data-d]');
+  if (ed) writeModal(DATA.items.find(x => x.id === ed.dataset.e));
+  if (dl && confirm('정말 삭제할까요?')){
+    try{ await commit(d => { d.items = d.items.filter(x => x.id !== dl.dataset.d); }, 'Delete'); render(); toast('삭제했어요'); }
+    catch(x){ alert(x.message); }
+  }
+};
+$('#bNew').onclick = () => writeModal(); $('#bPro').onclick = proModal; $('#bSet').onclick = setModal;
+(async () => {
+  render();
+  if (!ready()){ setModal(); return; }
+  try{ await pull(); render(); }catch(e){ $('#list').innerHTML = `<div class="empty">${esc(e.message)}</div>`; }
+})();
+</script>
+</body>
+</html>
