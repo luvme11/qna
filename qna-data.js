@@ -29,7 +29,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvf9qar043k5",
+   "at": 1792415199154,
+   "n": 3,
+   "name": "",
+   "q": "개인 홈 만들 때 어떤 식으로 만드시는지 알려주실 수 있나여",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792415186668
+ "updatedAt": 1792415199154
 };
