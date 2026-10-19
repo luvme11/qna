@@ -461,7 +461,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfce4qxch9u",
+   "at": 1792419670370,
+   "n": 39,
+   "name": "",
+   "q": "미성년자 안 받는 이유가 먼가요",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419664634
+ "updatedAt": 1792419670370
 };
