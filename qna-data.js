@@ -76,9 +76,11 @@ window.QNA_DATA = {
    "n": 6,
    "name": "",
    "q": "나이 같은 거 이용 중이신건가요?",
-   "a": "",
+   "a": "Pix ai 이용 중이며 나이의 경우 제 그림체 다 찾아가면 업로드 할 거 같아요~",
    "hidden": false,
-   "qi": ""
+   "qi": "",
+   "ai": "",
+   "aAt": 1792417498136
   },
   {
    "id": "mvfa54oapfig",
@@ -131,5 +133,5 @@ window.QNA_DATA = {
    "qi": ""
   }
  ],
- "updatedAt": 1792417478956
+ "updatedAt": 1792417498587
 };
