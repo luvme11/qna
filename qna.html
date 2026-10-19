@@ -159,8 +159,8 @@ const pic = (src, text) => src ? `<a href="${esc(src)}" target="_blank" rel="noo
 const row = p => {
   const t = tm(p.at), hasA = p.a || p.ai;
   return `${p.hidden?'<div class="who"><b class="pv2">비공개</b></div>':''}
-  <div class="m q"><span class="ts">${t}</span>${ARW}<div class="bub">${pic(p.qi, p.q)}${p.q ? lk(p.q) : ''}</div></div>
-  ${hasA ? `<div class="m a">${PF}<div class="bub">${pic(p.ai, p.a)}${p.a ? lk(p.a) : ''}</div>${ARW}<span class="ts">${tm(p.aAt || p.at)}</span></div>` : ''}`;
+  <div class="m q"><div class="bub">${pic(p.qi, p.q)}${p.q ? lk(p.q) : ''}</div></div>
+  ${hasA ? `<div class="m a">${PF}<div class="bub">${pic(p.ai, p.a)}${p.a ? lk(p.a) : ''}</div></div>` : ''}`;
 };
 
 function render(){
