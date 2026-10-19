@@ -373,7 +373,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfc37wsrcs1",
+   "at": 1792419161227,
+   "n": 33,
+   "name": "",
+   "q": "혹시 자캐들끼리도 관계성이 있나요??",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419151572
+ "updatedAt": 1792419161227
 };
