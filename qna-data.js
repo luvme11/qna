@@ -273,7 +273,17 @@ window.QNA_DATA = {
    "qi": "",
    "ai": "",
    "aAt": 1792418987646
+  },
+  {
+   "id": "mvfbzv0dkojo",
+   "at": 1792419004572,
+   "n": 23,
+   "name": "",
+   "q": "클로드 어떻게 팸?",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792418988114
+ "updatedAt": 1792419004572
 };
