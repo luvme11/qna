@@ -62,6 +62,26 @@ mark{background:#e6e6e6;color:inherit;border-radius:3px;padding:1px 3px}
 .pgn button:hover:not(:disabled){background:#f0f0f0;color:#111}.pgn button.on{background:#2a2a2a;color:#fff}.pgn button:disabled{opacity:.25;cursor:default}
 .heart{position:fixed;top:22px;right:38px;font-size:15px;color:#b9b9b9;text-decoration:none}.heart:hover{color:#666}
 .pv2{display:inline-block;margin-left:6px;font-size:8.5px;font-weight:800;letter-spacing:.08em;padding:2px 7px;border-radius:10px;background:#eee;color:#666;vertical-align:middle}
+/* 채팅 스타일 */
+.body.chat{background:#f5f6f8;padding:22px 22px 26px}
+.dv{display:flex;align-items:center;gap:12px;margin:22px 0 18px;font-size:10px;font-weight:600;color:#8a8f98;white-space:nowrap}
+.dv:first-child{margin-top:4px}
+.dv::before,.dv::after{content:"";flex:1;border-top:1px solid #dcdfe4}
+.who{text-align:right;font-size:9px;font-weight:700;letter-spacing:.08em;color:#8a8f98;margin:0 40px 4px 0}
+.m{display:flex;align-items:flex-end;gap:6px;margin-bottom:14px}
+.m.q{justify-content:flex-end}
+.m.a{justify-content:flex-start;gap:8px}
+.bub{max-width:min(78%,420px);padding:11px 16px;font-size:12px;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.m.q .bub{background:#e6eaf0;color:#2a2a2a;border-radius:20px 20px 6px 20px}
+.m.a .bub{background:#fff;color:#2a2a2a;border-radius:20px 20px 20px 6px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.m.a .bub.wait{color:#aaa;font-size:11px}
+.bub a{text-decoration:underline;text-underline-offset:2px;word-break:break-all}
+.pf{flex:none;width:34px;height:34px;border-radius:50%;background:#d9dce1;overflow:hidden;align-self:flex-start}
+.pf img{width:100%;height:100%;object-fit:cover;display:block}
+.ar{flex:none;width:22px;height:22px;border-radius:50%;background:#e1e4e9;color:#2fa58a;display:grid;place-items:center}
+.ts{flex:none;font-size:9px;color:#9aa0a8;white-space:nowrap}
+.m.q .ts,.m.q .ar{order:-1}.m.q .ts{order:-2}
+.pgn.top{margin:0 0 18px}
 @media (max-width:1000px){
   body{padding:30px 0}main{grid-template-columns:1fr;gap:26px;width:calc(100vw - 32px)}
   .card{height:auto}.body{overflow:visible}.sh i{display:none}
@@ -116,10 +136,15 @@ function pager(pg, pages){
   for (let i=s;i<=e;i++) n.push(`<button data-p="${i}" class="${i===pg?'on':''}">${i}</button>`);
   return `<div class="pgn"><button data-p="1" ${pg<2?'disabled':''}>«</button><button data-p="${pg-1}" ${pg<2?'disabled':''}>‹</button>${n.join('')}<button data-p="${pg+1}" ${pg>=pages?'disabled':''}>›</button><button data-p="${pages}" ${pg>=pages?'disabled':''}>»</button></div>`;
 }
+const tm = t => { const d = new Date(t||0); if (!t || isNaN(d)) return ''; const h = d.getHours(); return (h<12?'오전 ':'오후 ') + (h%12||12) + ':' + pad(d.getMinutes()); };
+const DAY = t => { const d = new Date(t||0); return !t || isNaN(d) ? '' : d.getFullYear()+'년 '+(d.getMonth()+1)+'월 '+d.getDate()+'일 '+'일월화수목금토'[d.getDay()]+'요일'; };
+const ARW = '<span class="ar"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v7a2 2 0 0 0 2 2h7"/><path d="M10 8l3 3-3 3"/></svg></span>';
+const PF = '<div class="pf">' + (P.avatar ? `<img src="${esc(P.avatar)}" alt="">` : '') + '</div>';
 const row = p => {
-  const on = OPEN === p.id, first = String(p.q||'').split('\n')[0];
-  return `<div class="it pt${on?' on':''}"><div class="sh" data-o="${esc(p.id)}"><em>${esc(nameOf(p))}</em><h3>${hl(first||'(내용 없음)')}${p.hidden?'<b class="pv2">비공개</b>':''}</h3><i></i><span>${fmt(p.at)}</span><span class="cv">▾</span></div>
-  ${on ? `<div class="ab">${lk(p.q||'')}</div>${p.a ? `<div class="tx">${lk(p.a)}</div>` : '<div class="dt">ANSWER · 아직 답변 전이에요</div>'}` : ''}</div>`;
+  const t = tm(p.at);
+  return `<div class="who">${esc(nameOf(p))}${p.hidden?'<b class="pv2">비공개</b>':''}</div>
+  <div class="m q"><span class="ts">${t}</span>${ARW}<div class="bub">${lk(p.q||'')}</div></div>
+  <div class="m a">${PF}${p.a ? `<div class="bub">${lk(p.a)}</div>${ARW}<span class="ts">${tm(p.aAt || p.at)}</span>` : '<div class="bub wait">아직 답변 전이에요…</div>'}</div>`;
 };
 
 function render(){
@@ -128,6 +153,7 @@ function render(){
   $('#card').classList.toggle('f1', T===0);
   const intro = TABS[T].k === 'intro';
   $('.sr').style.display = intro ? 'none' : 'flex';
+  $('#body').classList.toggle('chat', !intro);
   if (intro){
     $('#body').innerHTML = `<div class="sh"><em>01</em><h3>ABOUT</h3><i></i><span>INTRO</span></div>
       <div class="ab" style="margin-left:33px">${P.text ? lk(P.text) : '소개글을 관리자 페이지에서 적어 주세요.'}</div>
@@ -141,15 +167,18 @@ function render(){
   PG = Math.min(PG, pages);
   const cur = list.slice((PG-1)*SIZE, PG*SIZE);
   $('#rc').textContent = list.length + ' / ' + all.length;
-  $('#body').innerHTML = !list.length ? '<div class="empty">'+(all.length?'검색 결과가 없어요':'아직 올린 게 없어요')+'</div>' : cur.map(row).join('') + pager(PG, pages);
+  $('#body').classList.add('chat');
+  /* 최신 페이지가 1페이지, 한 페이지 안에서는 오래된 순 → 위에서 아래로 읽는 대화 */
+  let last = '', html = '';
+  cur.slice().reverse().forEach(p => { const d = DAY(p.at); if (d !== last){ html += `<div class="dv">${d}</div>`; last = d; } html += row(p); });
+  $('#body').innerHTML = !list.length ? '<div class="empty">'+(all.length?'검색 결과가 없어요':'아직 올린 게 없어요')+'</div>' : pager(PG, pages).replace('class="pgn"','class="pgn top"') + html;
+  $('#body').scrollTop = $('#body').scrollHeight;
 }
-$('#tabs').onclick = e => { const b = e.target.closest('[data-t]'); if(!b) return; T = +b.dataset.t; Q = ''; PG = 1; OPEN = null; $('#q').value = ''; render(); $('#body').scrollTop = 0; };
+$('#tabs').onclick = e => { const b = e.target.closest('[data-t]'); if(!b) return; T = +b.dataset.t; Q = ''; PG = 1; OPEN = null; $('#q').value = ''; render(); };
 $('#q').oninput = e => { Q = e.target.value.trim(); PG = 1; render(); };
 $('#body').onclick = e => {
   const p = e.target.closest('[data-p]');
-  if (p && !p.disabled){ PG = +p.dataset.p; render(); $('#body').scrollTop = 0; window.scrollTo(0,0); return; }
-  const ob = e.target.closest('[data-o]');
-  if (ob){ const id = ob.dataset.o; OPEN = OPEN === id ? null : id; render(); const h = document.querySelector('[data-o="' + id + '"]'); if (h) h.scrollIntoView({block:'nearest'}); }
+  if (p && !p.disabled){ PG = +p.dataset.p; render(); window.scrollTo(0,0); }
 };
 render();
 </script>
