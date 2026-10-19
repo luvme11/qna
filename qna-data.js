@@ -197,7 +197,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfbauepzr5n",
+   "at": 1792417837388,
+   "n": 18,
+   "name": "",
+   "q": "아니 혹시 앵챗에 돈 얼마나 쓰셨어요...? ㅋㅋㅋㅋ",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792417830168
+ "updatedAt": 1792417837388
 };
