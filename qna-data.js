@@ -167,7 +167,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfbae47udos",
+   "at": 1792417816254,
+   "n": 15,
+   "name": "",
+   "q": "헉 혹시 요즘 어느 플랫폼에서 제일 많이 노세요??",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792417805318
+ "updatedAt": 1792417816254
 };
