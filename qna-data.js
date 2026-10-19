@@ -487,7 +487,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfe6mwa6xcz",
+   "at": 1792422679908,
+   "n": 41,
+   "name": "",
+   "q": "님은 무료 재화 다 쓰면 바로 현질하세요??",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792422601806
+ "updatedAt": 1792422679908
 };
