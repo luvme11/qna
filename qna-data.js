@@ -448,9 +448,11 @@ window.QNA_DATA = {
    "n": 37,
    "name": "",
    "q": "님이랑 친해지고 싶은데 트친소 안 여시나요...",
-   "a": "",
+   "a": "잘 안 열어요 ^__^...",
    "hidden": false,
-   "qi": ""
+   "qi": "",
+   "ai": "",
+   "aAt": 1792419680142
   },
   {
    "id": "mvfcdiivam0o",
@@ -473,5 +475,5 @@ window.QNA_DATA = {
    "qi": ""
   }
  ],
- "updatedAt": 1792419670370
+ "updatedAt": 1792419680603
 };
