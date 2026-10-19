@@ -517,7 +517,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfe7juc0aq9",
+   "at": 1792422722586,
+   "n": 44,
+   "name": "",
+   "q": "프롬프트 어케 짜요? 옷이나 구도 같은 거요",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792422715153
+ "updatedAt": 1792422722586
 };
