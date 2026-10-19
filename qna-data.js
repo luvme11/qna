@@ -364,9 +364,11 @@ window.QNA_DATA = {
    "n": 30,
    "name": "",
    "q": "세계관 설정 꼼꼼히 읽으시는 편인가요?",
-   "a": "",
+   "a": "넹",
    "hidden": false,
-   "qi": ""
+   "qi": "",
+   "ai": "",
+   "aAt": 1792419552556
   },
   {
    "id": "mvfc1r03s8yq",
@@ -419,5 +421,5 @@ window.QNA_DATA = {
    "qi": ""
   }
  ],
- "updatedAt": 1792419538061
+ "updatedAt": 1792419553061
 };
