@@ -333,7 +333,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfc1d4rp148",
+   "at": 1792419074705,
+   "n": 29,
+   "name": "",
+   "q": "혐관으로 시작했다가 순애 되는 거 좋아하시나요...?",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419069379
+ "updatedAt": 1792419074705
 };
