@@ -520,9 +520,11 @@ window.QNA_DATA = {
    "n": 43,
    "name": "",
    "q": "룩 천천히 올려주떼염",
-   "a": "",
+   "a": "주말까진 다 올려볼게요~",
    "hidden": false,
-   "qi": ""
+   "qi": "",
+   "ai": "",
+   "aAt": 1792422871509
   },
   {
    "id": "mvfe7juc0aq9",
@@ -535,5 +537,5 @@ window.QNA_DATA = {
    "qi": ""
   }
  ],
- "updatedAt": 1792422865725
+ "updatedAt": 1792422871961
 };
