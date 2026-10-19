@@ -163,8 +163,8 @@ window.QNA_DATA = {
    "a": "이번 주말 내로 룩 전체 최종 업로드 해서 개인 홈 업로드 하겠습니다!\n현재까지 #381 중 #159 부분까지 업로드는 해 놨어요\n이따 새벽에 html 사이트 구현이 끝나면 #200까진 업로드 해두겠습니다",
    "hidden": false,
    "qi": "",
-   "ai": "img/qna/mvfb7hd4g06n-a-mvfbofc8.jpg",
-   "aAt": 1792418472092
+   "ai": "",
+   "aAt": 1792418486794
   },
   {
    "id": "mvfba5num3wb",
@@ -257,5 +257,5 @@ window.QNA_DATA = {
    "qi": ""
   }
  ],
- "updatedAt": 1792418472608
+ "updatedAt": 1792418487423
 };
