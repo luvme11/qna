@@ -107,7 +107,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfa60coh568",
+   "at": 1792415932345,
+   "n": 10,
+   "name": "",
+   "q": "kit님 서미르 표유리 나온 거 해보셧나염",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792415913115
+ "updatedAt": 1792415932345
 };
