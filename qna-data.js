@@ -303,7 +303,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfc0w7k0hu0",
+   "at": 1792419052784,
+   "n": 26,
+   "name": "",
+   "q": "그럼 OC=페소인 건가요? 어떤 식으로 먹는지 궁금함...",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419033556
+ "updatedAt": 1792419052784
 };
