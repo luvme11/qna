@@ -400,9 +400,11 @@ window.QNA_DATA = {
    "n": 33,
    "name": "",
    "q": "혹시 자캐들끼리도 관계성이 있나요??",
-   "a": "",
+   "a": "없어요",
    "hidden": false,
-   "qi": ""
+   "qi": "",
+   "ai": "",
+   "aAt": 1792419587287
   },
   {
    "id": "mvfc4sogp9fu",
@@ -425,5 +427,5 @@ window.QNA_DATA = {
    "qi": ""
   }
  ],
- "updatedAt": 1792419581735
+ "updatedAt": 1792419587929
 };
