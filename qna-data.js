@@ -117,7 +117,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfazg4gwlka",
+   "at": 1792417305649,
+   "n": 11,
+   "name": "",
+   "q": "근데 어차피 딸깍충인데 로라 공유가 머가 어렵다고 그러삼?",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792417285823
+ "updatedAt": 1792417305649
 };
