@@ -202,15 +202,13 @@ function render(){
   const q = Q.toLowerCase();
   const all = ITEMS.filter(i => OWNER || !i.hidden).sort((x,y) => (y.at||0) - (x.at||0));
   const list = all.filter(p => !q || [nameOf(p), p.q, p.a].join(' ').toLowerCase().includes(q));
-  const pages = Math.max(1, Math.ceil(list.length/SIZE));
-  PG = Math.min(PG, pages);
-  const cur = list.slice((PG-1)*SIZE, PG*SIZE);
+  const cur = list; /* 페이지 나누지 않고 전부 한 번에 (위로 쭉 올려서 보기) */
   $('#rc').textContent = list.length + ' / ' + all.length;
   $('#body').classList.add('chat');
   /* 최신 페이지가 1페이지, 한 페이지 안에서는 오래된 순 → 위에서 아래로 읽는 대화 */
   let last = '', html = '';
   cur.slice().reverse().forEach(p => { const d = DAY(p.at); if (d !== last){ html += `<div class="dv">${d}</div>`; last = d; } html += row(p); });
-  $('#body').innerHTML = !list.length ? '<div class="empty">'+(all.length?'검색 결과가 없어요':'아직 올린 게 없어요')+'</div>' : pager(PG, pages).replace('class="pgn"','class="pgn top"') + html;
+  $('#body').innerHTML = !list.length ? '<div class="empty">'+(all.length?'검색 결과가 없어요':'아직 올린 게 없어요')+'</div>' : html;
   $('#body').scrollTop = $('#body').scrollHeight;
 }
 $('#tabs').onclick = e => { const b = e.target.closest('[data-t]'); if(!b) return; T = +b.dataset.t; Q = ''; PG = 1; OPEN = null; $('#q').value = ''; render(); };
