@@ -283,7 +283,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfc09572uz1",
+   "at": 1792419022897,
+   "n": 24,
+   "name": "",
+   "q": "근데 나만 19 관계 채팅 나오면 약간 현타 오나 ㅋㅋ",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419004572
+ "updatedAt": 1792419022897
 };
