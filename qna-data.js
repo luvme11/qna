@@ -395,7 +395,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfc5wzogv2q",
+   "at": 1792419287049,
+   "n": 35,
+   "name": "",
+   "q": "제작할 생각은 없나요",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419279557
+ "updatedAt": 1792419287049
 };
