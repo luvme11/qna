@@ -227,7 +227,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfbbewfzlv3",
+   "at": 1792417863957,
+   "n": 21,
+   "name": "",
+   "q": "혹시 자캐 이름은 어떻게 지으세요? 맨날 이름 짓다가 막혀서...",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792417851282
+ "updatedAt": 1792417863957
 };
