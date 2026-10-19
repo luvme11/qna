@@ -293,7 +293,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfc0hdmi54j",
+   "at": 1792419033556,
+   "n": 25,
+   "name": "",
+   "q": "앵챗할 때 한 캐릭터만 파는 편이세요??",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419022897
+ "updatedAt": 1792419033556
 };
