@@ -9,16 +9,6 @@ window.QNA_DATA = {
   "tags": [],
   "avatar": "img/qna-avatar.png?v=1792414799000"
  },
- "items": [
-  {
-   "id": "sample1",
-   "at": 1760745600000,
-   "n": 1,
-   "name": "",
-   "q": "처음 인사드려요! 질문해도 될까요?",
-   "a": "그럼요, 언제든 환영이에요.",
-   "hidden": false
-  }
- ],
- "updatedAt": 1792415095207
+ "items": [],
+ "updatedAt": 1792415097461
 };
