@@ -19,7 +19,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvf9q13n9vsl",
+   "at": 1792415186668,
+   "n": 2,
+   "name": "",
+   "q": "개인 홈 몇 개 운영 중이세요?",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792415111905
+ "updatedAt": 1792415186668
 };
