@@ -549,7 +549,17 @@ window.QNA_DATA = {
    "qi": "",
    "ai": "",
    "aAt": 1792422901177
+  },
+  {
+   "id": "mvfebizo8ajp",
+   "at": 1792422908111,
+   "n": 46,
+   "name": "",
+   "q": "오노추 해주세요",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792422901799
+ "updatedAt": 1792422908111
 };
