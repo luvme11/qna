@@ -497,7 +497,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfe74zmm74i",
+   "at": 1792422703311,
+   "n": 42,
+   "name": "",
+   "q": "픽스 요즘 너무 느려진 거 가틈",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792422679908
+ "updatedAt": 1792422703311
 };
