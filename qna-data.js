@@ -28,9 +28,11 @@ window.QNA_DATA = {
    "n": 2,
    "name": "",
    "q": "개인 홈 몇 개 운영 중이세요?",
-   "a": "",
+   "a": "아래 사이트 ECT 부분 확인해 주시면 확인 가능합니다!\nhttps://luvme11.github.io/NEW-HOME/index.html#me",
    "hidden": false,
-   "qi": ""
+   "qi": "",
+   "ai": "",
+   "aAt": 1792415525833
   },
   {
    "id": "mvf9qar043k5",
@@ -53,5 +55,5 @@ window.QNA_DATA = {
    "qi": ""
   }
  ],
- "updatedAt": 1792415498556
+ "updatedAt": 1792415526258
 };
