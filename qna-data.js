@@ -313,7 +313,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfc14xe06pa",
+   "at": 1792419064050,
+   "n": 27,
+   "name": "",
+   "q": "님은 NPC가 먼저 감기는 게 좋아요 아니면 PC가 먼저 감기는 게 좋아요?",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419052784
+ "updatedAt": 1792419064050
 };
