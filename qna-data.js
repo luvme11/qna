@@ -363,7 +363,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfc30fhm78i",
+   "at": 1792419151572,
+   "n": 32,
+   "name": "",
+   "q": "오노추",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419092701
+ "updatedAt": 1792419151572
 };
