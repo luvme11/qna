@@ -439,7 +439,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfcddtlt8p4",
+   "at": 1792419635462,
+   "n": 37,
+   "name": "",
+   "q": "님이랑 친해지고 싶은데 트친소 안 여시나요...",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419624804
+ "updatedAt": 1792419635462
 };
