@@ -343,7 +343,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfc1im6nogk",
+   "at": 1792419081964,
+   "n": 30,
+   "name": "",
+   "q": "세계관 설정 꼼꼼히 읽으시는 편인가요?",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419074705
+ "updatedAt": 1792419081964
 };
