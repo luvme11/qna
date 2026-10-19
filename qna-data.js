@@ -328,9 +328,11 @@ window.QNA_DATA = {
    "n": 27,
    "name": "",
    "q": "님은 NPC가 먼저 감기는 게 좋아요 아니면 PC가 먼저 감기는 게 좋아요?",
-   "a": "",
+   "a": "둘 다 좋아해서 고를 수가 X",
    "hidden": false,
-   "qi": ""
+   "qi": "",
+   "ai": "",
+   "aAt": 1792419441976
   },
   {
    "id": "mvfc1914bkuo",
@@ -413,5 +415,5 @@ window.QNA_DATA = {
    "qi": ""
   }
  ],
- "updatedAt": 1792419433364
+ "updatedAt": 1792419442442
 };
