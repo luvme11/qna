@@ -11,15 +11,6 @@ window.QNA_DATA = {
  },
  "items": [
   {
-   "id": "sample2",
-   "at": 1760832000000,
-   "n": 2,
-   "name": "",
-   "q": "요즘 제일 좋아하는 게 뭐예요?",
-   "a": "요즘은 ==이미지 만들기==에 빠져 있어요 :)",
-   "hidden": false
-  },
-  {
    "id": "sample1",
    "at": 1760745600000,
    "n": 1,
@@ -29,5 +20,5 @@ window.QNA_DATA = {
    "hidden": false
   }
  ],
- "updatedAt": 1792414802044
+ "updatedAt": 1792415095207
 };
