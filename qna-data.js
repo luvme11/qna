@@ -412,9 +412,11 @@ window.QNA_DATA = {
    "n": 34,
    "name": "",
    "q": "요즘 자주 보는 유튜브 있나요",
-   "a": "",
+   "a": "선바 케인 룩삼",
    "hidden": false,
-   "qi": ""
+   "qi": "",
+   "ai": "",
+   "aAt": 1792419594887
   },
   {
    "id": "mvfc5wzogv2q",
@@ -427,5 +429,5 @@ window.QNA_DATA = {
    "qi": ""
   }
  ],
- "updatedAt": 1792419587929
+ "updatedAt": 1792419595342
 };
