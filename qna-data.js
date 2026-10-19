@@ -9,6 +9,17 @@ window.QNA_DATA = {
   "tags": [],
   "avatar": "img/qna-avatar.png?v=1792414799000"
  },
- "items": [],
- "updatedAt": 1792415097461
+ "items": [
+  {
+   "id": "mvf9ofeymqzw",
+   "at": 1792415111905,
+   "n": 1,
+   "name": "",
+   "q": "로라 관련 질문은 왜 하면 안 되는지 궁금해요 ㅠ.ㅠ",
+   "a": "",
+   "hidden": false,
+   "qi": ""
+  }
+ ],
+ "updatedAt": 1792415111905
 };
