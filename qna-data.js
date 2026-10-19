@@ -187,7 +187,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfbaoup8x4y",
+   "at": 1792417830168,
+   "n": 17,
+   "name": "",
+   "q": "혹시 유저노트 얼마나 길게 쓰세요?",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792417824193
+ "updatedAt": 1792417830168
 };
