@@ -133,7 +133,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfb5nw5s54t",
+   "at": 1792417595783,
+   "n": 12,
+   "name": "",
+   "q": "케덕 임찬희는 찍먹도 안 되나요??",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792417582458
+ "updatedAt": 1792417595783
 };
