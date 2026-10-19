@@ -145,7 +145,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfb7hd4g06n",
+   "at": 1792417680490,
+   "n": 13,
+   "name": "",
+   "q": "룩은 다 언제 업로드 되나요? 구도만 업로드 된 건지 궁금해용",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792417667099
+ "updatedAt": 1792417680490
 };
