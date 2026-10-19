@@ -77,7 +77,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfa54oapfig",
+   "at": 1792415891144,
+   "n": 7,
+   "name": "",
+   "q": "앵챗 플랫폼 ㅊㅊ 해주세요 누나",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792415872051
+ "updatedAt": 1792415891144
 };
