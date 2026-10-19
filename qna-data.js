@@ -87,7 +87,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfa5en3081f",
+   "at": 1792415904191,
+   "n": 8,
+   "name": "",
+   "q": "html 구동 사이트는 언제 만들어 주쉐이... ㅃㄹ 해주시길...... 님만 기다려요 ㅠ",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792415891144
+ "updatedAt": 1792415904191
 };
