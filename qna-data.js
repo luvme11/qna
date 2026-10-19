@@ -177,7 +177,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfbak7xdn9a",
+   "at": 1792417824193,
+   "n": 16,
+   "name": "",
+   "q": "요즘 제일 재밌게 먹고 있는 캐 누구예요 ㅋㅋㅋ",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792417816254
+ "updatedAt": 1792417824193
 };
