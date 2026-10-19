@@ -449,7 +449,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfcdiivam0o",
+   "at": 1792419641592,
+   "n": 38,
+   "name": "",
+   "q": "혹시 익명 질문 자주 확인하시나요??",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419635462
+ "updatedAt": 1792419641592
 };
