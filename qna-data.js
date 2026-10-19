@@ -383,7 +383,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfc4sogp9fu",
+   "at": 1792419234822,
+   "n": 34,
+   "name": "",
+   "q": "요즘 자주 보는 유튜브 있나요",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419161227
+ "updatedAt": 1792419234822
 };
