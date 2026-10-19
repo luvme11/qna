@@ -97,7 +97,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfa5lmo9xgp",
+   "at": 1792415913115,
+   "n": 9,
+   "name": "",
+   "q": "임찬희랑 무슨 조합으로 먹는지 궁금함",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792415904191
+ "updatedAt": 1792415913115
 };
