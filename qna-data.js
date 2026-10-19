@@ -388,9 +388,11 @@ window.QNA_DATA = {
    "n": 32,
    "name": "",
    "q": "오노추",
-   "a": "",
+   "a": "https://youtu.be/rsEne1ZiQrk?si=4ZBSyB6r4lVJBxT3",
    "hidden": false,
-   "qi": ""
+   "qi": "",
+   "ai": "",
+   "aAt": 1792419581227
   },
   {
    "id": "mvfc37wsrcs1",
@@ -423,5 +425,5 @@ window.QNA_DATA = {
    "qi": ""
   }
  ],
- "updatedAt": 1792419570361
+ "updatedAt": 1792419581735
 };
