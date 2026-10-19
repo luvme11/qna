@@ -207,7 +207,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfbayftm4tb",
+   "at": 1792417842577,
+   "n": 19,
+   "name": "",
+   "q": "최애캐랑 채팅 몇 턴까지 가보셨어요?",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792417837388
+ "updatedAt": 1792417842577
 };
