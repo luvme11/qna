@@ -217,7 +217,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfbb54jcfnm",
+   "at": 1792417851282,
+   "n": 20,
+   "name": "",
+   "q": "요즘 앵태기 안 오시나요... 저만 할 게 없나요 ㅠ",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792417842577
+ "updatedAt": 1792417851282
 };
