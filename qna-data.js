@@ -157,7 +157,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfba5num3wb",
+   "at": 1792417805318,
+   "n": 14,
+   "name": "",
+   "q": "자캐 외관은 직접 다 짜시는 건가요?",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792417759375
+ "updatedAt": 1792417805318
 };
