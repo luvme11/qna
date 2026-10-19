@@ -40,6 +40,8 @@ h1{font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
 .pv{display:none;gap:6px;flex-wrap:wrap;margin-top:8px}.pv.on{display:flex}
 .pv img{width:64px;height:64px;border-radius:8px;object-fit:cover;background:repeating-conic-gradient(#e6e6e6 0 25%,#fff 0 50%) 0 0/12px 12px}
 .mf{display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-top:18px}.mf span{flex:1;font-size:10px;color:#888}
+.th{position:relative;display:inline-block}
+.th button{position:absolute;top:-6px;right:-6px;width:18px;height:18px;border-radius:50%;background:#2a2a2a;color:#fff;font-size:9px;line-height:18px;text-align:center}
 .hint{font-size:10px;color:#999;line-height:1.6;margin-top:8px}
 .md label.ck{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0;color:#444;margin:16px 0 0;cursor:pointer}
 .md input[type=checkbox]{display:inline-block;width:16px;height:16px;padding:0;flex:none;accent-color:#2a2a2a}
@@ -172,21 +174,35 @@ function writeModal(it){
 }
 function proModal(){
   const p = DATA.profile || {};
+  const INT = {keep:[].concat(p.introImgs || p.introImg || []).filter(Boolean), add:[]};
   modal('소개 편집', `
     <label>제목 (줄바꿈 가능)</label><textarea id="pT" style="min-height:56px">${esc(p.title||'Ask\nMe')}</textarea>
     <label>부제</label><input id="pS" value="${esc(p.sub||'QUESTIONS · ANSWERS')}">
     <label>이름</label><input id="pN" value="${esc(p.name)}"><label>핸들</label><input id="pH" value="${esc(p.handle)}">
     <label>소개글  ·  ==글자==는 형광펜</label><textarea id="pX">${esc(p.text)}</textarea>
     <label>태그 (쉼표로 구분)</label><input id="pG" value="${esc((p.tags||[]).join(', '))}">
+    <label>소개 이미지 (선택 · 최대 6장 · 네모 썸네일로 보여요)</label><input type="file" id="fIm" accept="image/*" multiple><div class="pv on" id="fImp"></div>
+    <p class="hint">첫 장부터 순서대로 소개글 아래에 나와요. ✕를 누르면 빼요.</p>
     <label>프로필 사진 (선택)</label><input type="file" id="fAv" accept="image/*"><div class="pv"></div>
     <label>파비콘 · 브라우저 탭 아이콘 (선택)</label><input type="file" id="fFv" accept="image/*"><div class="pv"></div>`, async () => {
     const f = $('#fAv').files_data[0]; let av = p.avatar || '';
     if (f){ av = 'img/qna-avatar.png?v=' + Date.now(); await putImg('img/qna-avatar.png', await square(f, 300, true)); }
     const fv = $('#fFv').files_data[0]; let ico = p.favicon || '';
     if (fv){ ico = await square(fv, 64, true); }
-    const v = {favicon:ico, title:$('#pT').value, sub:F('pS'), name:F('pN'), handle:F('pH'), text:$('#pX').value.trim(), tags:F('pG').split(',').map(s=>s.trim()).filter(Boolean), avatar:av};
-    await commit(d => { d.profile = Object.assign(d.profile||{}, v); }, 'Edit profile');
-  }), picker('fAv', p.avatar), picker('fFv', p.favicon);
+    const stamp = Date.now().toString(36), added = [];
+    for (let i = 0; i < INT.add.length; i++){ const path = `img/qna/intro-${stamp}-${i}.jpg`; await putImg(path, await fit(INT.add[i].f, 1000)); added.push(path); }
+    const introImgs = [...INT.keep, ...added], removed = [].concat(p.introImgs || p.introImg || []).filter(x => !INT.keep.includes(x));
+    const v = {introImgs, favicon:ico, title:$('#pT').value, sub:F('pS'), name:F('pN'), handle:F('pH'), text:$('#pX').value.trim(), tags:F('pG').split(',').map(s=>s.trim()).filter(Boolean), avatar:av};
+    await commit(d => { d.profile = Object.assign(d.profile||{}, v); delete d.profile.introImg; }, 'Edit profile');
+    removed.forEach(x => delImg(x).catch(()=>{}));
+  }), picker('fAv', p.avatar), picker('fFv', p.favicon), bindIntro(INT);
+}
+function bindIntro(INT){
+  const f = $('#fIm'), box = $('#fImp'), MAX = 6;
+  const draw = () => { box.innerHTML = [...INT.keep.map((s,i)=>`<span class="th"><img src="${esc(s)}"><button type="button" data-k="${i}">✕</button></span>`), ...INT.add.map((x,i)=>`<span class="th"><img src="${esc(x.u)}"><button type="button" data-a="${i}">✕</button></span>`)].join(''); };
+  f.onchange = () => { [...f.files].forEach(file => { if (INT.keep.length + INT.add.length < MAX) INT.add.push({f:file, u:URL.createObjectURL(file)}); }); f.value = ''; draw(); };
+  box.onclick = e => { const b = e.target.closest('button'); if (!b) return; if (b.dataset.k != null) INT.keep.splice(+b.dataset.k, 1); else INT.add.splice(+b.dataset.a, 1); draw(); };
+  draw();
 }
 function setModal(){
   const g = LS();
