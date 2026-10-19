@@ -353,7 +353,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfc1r03s8yq",
+   "at": 1792419092701,
+   "n": 31,
+   "name": "",
+   "q": "캐릭터한테 정떨어지면 바로 채팅 삭제하시나요 ㅋㅋㅋ",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419081964
+ "updatedAt": 1792419092701
 };
