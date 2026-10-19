@@ -82,6 +82,20 @@ mark{background:#e6e6e6;color:inherit;border-radius:3px;padding:1px 3px}
 .ts{flex:none;font-size:9px;color:#9aa0a8;white-space:nowrap}
 .m.q .ts,.m.q .ar{order:-1}.m.q .ts{order:-2}
 .pgn.top{margin:0 0 18px}
+.pi{display:block;max-width:100%;max-height:260px;border-radius:12px;margin:0 0 6px}
+.pi.only{margin:0}
+.bub a:has(.pi){text-decoration:none}
+.cmp{display:none;flex:1;min-width:0;flex-direction:column;gap:6px}
+.cr{display:flex;align-items:flex-end;gap:6px;background:#fafafa;border:1px solid #ddd;border-radius:20px;padding:4px 5px}
+.cr:focus-within{border-color:#2a2a2a}
+.cr textarea{flex:1;min-width:0;border:0;background:none;outline:0;resize:none;font-size:12px;line-height:20px;padding:5px 4px;max-height:96px;font-family:inherit}
+.att,.sb{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center}
+.att{color:#888;cursor:pointer}.att:hover{color:#111;background:#eee}
+.sb{background:#2a2a2a;color:#fff;font-size:13px}.sb:disabled{opacity:.4;cursor:default}
+.cpv{display:none;align-items:center;gap:8px;padding-left:4px}.cpv.on{display:flex}
+.cpv img{width:48px;height:48px;border-radius:8px;object-fit:cover}
+.cpv button{font-size:10px;font-weight:700;color:#888}.cpv button:hover{color:#c0392b}
+.cm{font-size:10px;color:#c0392b;padding-left:6px}.cm:empty{display:none}
 @media (max-width:1000px){
   body{padding:30px 0}main{grid-template-columns:1fr;gap:26px;width:calc(100vw - 32px)}
   .card{height:auto}.body{overflow:visible}.sh i{display:none}
@@ -102,7 +116,8 @@ mark{background:#e6e6e6;color:inherit;border-radius:3px;padding:1px 3px}
   </aside>
   <section>
     <div class="bar"><div class="tabs" id="tabs"></div><div class="cnt"><b id="cur">01</b><small id="tot"></small></div></div>
-    <div class="card" id="card"><div class="sr"><input id="q" placeholder="질문·답변 검색"><small id="rc"></small></div><div class="body" id="body"></div></div>
+    <div class="card" id="card"><div class="sr"><input id="q" placeholder="질문·답변 검색"><small id="rc"></small>
+      <div class="cmp" id="cmp"><div class="cr"><label class="att" title="이미지 첨부"><input type="file" id="cf" accept="image/*" hidden><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.4 11.1l-9.2 9.2a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/></svg></label><textarea id="ci" rows="1" placeholder="질문을 적고 엔터 (줄바꿈은 Shift+엔터)"></textarea><button class="sb" id="cs" aria-label="보내기">↵</button></div><div class="cpv" id="cpv"></div><div class="cm" id="cm"></div></div></div><div class="body" id="body"></div></div>
   </section>
 </main>
 
@@ -120,7 +135,7 @@ const SIZE = 15;
 /* 관리자(토큰이 저장된 브라우저)만 비공개 글을 볼 수 있음 */
 const OWNER = (() => { try{ const g = JSON.parse(localStorage.getItem('home_gh') || '{}'); return !!(g.owner && g.repo && g.token); }catch(e){ return false; } })();
 /* 익명 번호: 올린 순서대로 1, 2, 3… (n이 저장돼 있으면 그 번호) */
-const NUM = {}; ITEMS.slice().sort((a,b)=>(a.at||0)-(b.at||0)).forEach((p,i)=>NUM[p.id] = p.n || i+1);
+const NUM = {}; const renum = () => ITEMS.slice().sort((a,b)=>(a.at||0)-(b.at||0)).forEach((p,i)=>NUM[p.id] = p.n || i+1); renum();
 const nameOf = p => p.name || '익명 ' + NUM[p.id];
 let T = 0, Q = '', PG = 1, OPEN = null;
 $('#title').innerHTML = P.title.split('\n').map(esc).join('<br>');
@@ -140,11 +155,12 @@ const tm = t => { const d = new Date(t||0); if (!t || isNaN(d)) return ''; const
 const DAY = t => { const d = new Date(t||0); return !t || isNaN(d) ? '' : d.getFullYear()+'년 '+(d.getMonth()+1)+'월 '+d.getDate()+'일 '+'일월화수목금토'[d.getDay()]+'요일'; };
 const ARW = '<span class="ar"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v7a2 2 0 0 0 2 2h7"/><path d="M10 8l3 3-3 3"/></svg></span>';
 const PF = '<div class="pf">' + (P.avatar ? `<img src="${esc(P.avatar)}" alt="">` : '') + '</div>';
+const pic = (src, text) => src ? `<a href="${esc(src)}" target="_blank" rel="noopener"><img class="pi${text?'':' only'}" src="${esc(src)}" alt="" loading="lazy"></a>` : '';
 const row = p => {
-  const t = tm(p.at);
+  const t = tm(p.at), hasA = p.a || p.ai;
   return `<div class="who">${esc(nameOf(p))}${p.hidden?'<b class="pv2">비공개</b>':''}</div>
-  <div class="m q"><span class="ts">${t}</span>${ARW}<div class="bub">${lk(p.q||'')}</div></div>
-  <div class="m a">${PF}${p.a ? `<div class="bub">${lk(p.a)}</div>${ARW}<span class="ts">${tm(p.aAt || p.at)}</span>` : '<div class="bub wait">아직 답변 전이에요…</div>'}</div>`;
+  <div class="m q"><span class="ts">${t}</span>${ARW}<div class="bub">${pic(p.qi, p.q)}${p.q ? lk(p.q) : ''}</div></div>
+  <div class="m a">${PF}${hasA ? `<div class="bub">${pic(p.ai, p.a)}${p.a ? lk(p.a) : ''}</div>${ARW}<span class="ts">${tm(p.aAt || p.at)}</span>` : '<div class="bub wait">아직 답변 전이에요…</div>'}</div>`;
 };
 
 function render(){
@@ -180,6 +196,64 @@ $('#body').onclick = e => {
   const p = e.target.closest('[data-p]');
   if (p && !p.disabled){ PG = +p.dataset.p; render(); window.scrollTo(0,0); }
 };
+
+/* ---------- 질문 쓰기 (관리자 토큰이 있는 브라우저에서만) ---------- */
+const GHC = () => { try{ return JSON.parse(localStorage.getItem('home_gh') || '{}'); }catch(e){ return {}; } };
+const ghBr = () => GHC().branch || 'main';
+const ghH = () => ({Authorization:'Bearer '+GHC().token, Accept:'application/vnd.github+json', 'Content-Type':'application/json'});
+const ghU = p => { const g = GHC(); return `https://api.github.com/repos/${g.owner}/${g.repo}/contents/${p}`; };
+const b64 = s => btoa(unescape(encodeURIComponent(s)));
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+const fit = (f, max=1280) => new Promise((res, rej) => { const im = new Image(); im.onload = () => {
+  const s = Math.min(1, max / Math.max(im.width, im.height)), c = document.createElement('canvas'); c.width = Math.round(im.width*s); c.height = Math.round(im.height*s);
+  const x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0,0,c.width,c.height); x.drawImage(im,0,0,c.width,c.height); res(c.toDataURL('image/jpeg', .85)); };
+  im.onerror = () => rej(new Error('이미지를 읽을 수 없어요')); im.src = URL.createObjectURL(f); });
+async function ghPull(){
+  const r = await fetch(ghU('qna-data.js') + `?ref=${ghBr()}&t=${Date.now()}`, {cache:'no-store', headers:ghH()});
+  if (r.status === 404) return {d:{profile:{}, items:[]}, sha:''};
+  if (!r.ok) throw new Error('불러오기 실패 (' + r.status + ') — 관리자 페이지의 연결 설정을 확인해 주세요');
+  const j = await r.json(), d = JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g,'')))).replace(/^[^{]*/,'').replace(/;\s*$/,''));
+  d.items = d.items || []; d.profile = d.profile || {}; return {d, sha:j.sha};
+}
+async function ghCommit(mut, msg){
+  for (let a=0; a<3; a++){
+    const {d, sha} = await ghPull(); mut(d); d.updatedAt = Date.now();
+    const body = {message:msg, content:b64('window.QNA_DATA = ' + JSON.stringify(d, null, 1) + ';\n'), branch:ghBr()}; if (sha) body.sha = sha;
+    const r = await fetch(ghU('qna-data.js'), {method:'PUT', headers:ghH(), body:JSON.stringify(body)});
+    if (r.ok) return d;
+    if (r.status !== 409 && r.status !== 422) throw new Error('저장 실패 (' + r.status + ')');
+    await new Promise(res => setTimeout(res, 700));
+  }
+  throw new Error('저장 실패 — 다시 시도해 주세요');
+}
+async function ghImg(path, dataUrl){
+  const r = await fetch(ghU(path), {method:'PUT', headers:ghH(), body:JSON.stringify({message:'Upload ' + path, content:dataUrl.split(',')[1], branch:ghBr()})});
+  if (!r.ok) throw new Error('이미지 업로드 실패 (' + r.status + ')');
+}
+if (OWNER){
+  $('#q').style.display = 'none'; $('#rc').style.display = 'none'; $('#cmp').style.display = 'flex';
+  let FILE = null, BUSY = false;
+  const ci = $('#ci'), msg = t => $('#cm').textContent = t || '';
+  const grow = () => { ci.style.height = 'auto'; ci.style.height = Math.min(ci.scrollHeight, 96) + 'px'; };
+  const pv = () => { const b = $('#cpv'); b.classList.toggle('on', !!FILE); b.innerHTML = FILE ? `<img src="${URL.createObjectURL(FILE)}" alt=""><button type="button" id="cx">✕ 빼기</button>` : ''; };
+  ci.oninput = grow;
+  $('#cf').onchange = e => { FILE = e.target.files[0] || null; e.target.value = ''; pv(); };
+  $('#cpv').onclick = e => { if (e.target.id === 'cx'){ FILE = null; pv(); } };
+  async function send(){
+    const t = ci.value.trim(); if (BUSY || (!t && !FILE)) return;
+    BUSY = true; $('#cs').disabled = true; msg('올리는 중…');
+    try{
+      const id = uid(); let qi = '';
+      if (FILE){ qi = `img/qna/${id}-q-${Date.now().toString(36)}.jpg`; await ghImg(qi, await fit(FILE)); }
+      const d = await ghCommit(d => d.items.push({id, at:Date.now(), n:Math.max(0, ...d.items.map(i=>i.n||0), d.items.length) + 1, name:'', q:t, a:'', hidden:false, qi}), 'Add question');
+      ITEMS.length = 0; ITEMS.push(...d.items); renum();
+      ci.value = ''; grow(); FILE = null; pv(); msg(''); Q = ''; PG = 1; render();
+    }catch(e){ msg(e.message || '실패했어요'); }
+    BUSY = false; $('#cs').disabled = false;
+  }
+  $('#cs').onclick = send;
+  ci.onkeydown = e => { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing){ e.preventDefault(); send(); } };
+}
 render();
 </script>
 </body>
