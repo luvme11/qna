@@ -323,7 +323,17 @@ window.QNA_DATA = {
    "a": "",
    "hidden": false,
    "qi": ""
+  },
+  {
+   "id": "mvfc1914bkuo",
+   "at": 1792419069379,
+   "n": 28,
+   "name": "",
+   "q": "님은 AI 답변 별로면 몇 번까지 리롤하세요?",
+   "a": "",
+   "hidden": false,
+   "qi": ""
   }
  ],
- "updatedAt": 1792419064050
+ "updatedAt": 1792419069379
 };
