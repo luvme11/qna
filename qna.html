@@ -158,9 +158,9 @@ const PF = '<div class="pf">' + (P.avatar ? `<img src="${esc(P.avatar)}" alt="">
 const pic = (src, text) => src ? `<a href="${esc(src)}" target="_blank" rel="noopener"><img class="pi${text?'':' only'}" src="${esc(src)}" alt="" loading="lazy"></a>` : '';
 const row = p => {
   const t = tm(p.at), hasA = p.a || p.ai;
-  return `<div class="who">${esc(nameOf(p))}${p.hidden?'<b class="pv2">비공개</b>':''}</div>
+  return `${p.hidden?'<div class="who"><b class="pv2">비공개</b></div>':''}
   <div class="m q"><span class="ts">${t}</span>${ARW}<div class="bub">${pic(p.qi, p.q)}${p.q ? lk(p.q) : ''}</div></div>
-  <div class="m a">${PF}${hasA ? `<div class="bub">${pic(p.ai, p.a)}${p.a ? lk(p.a) : ''}</div>${ARW}<span class="ts">${tm(p.aAt || p.at)}</span>` : '<div class="bub wait">아직 답변 전이에요…</div>'}</div>`;
+  ${hasA ? `<div class="m a">${PF}<div class="bub">${pic(p.ai, p.a)}${p.a ? lk(p.a) : ''}</div>${ARW}<span class="ts">${tm(p.aAt || p.at)}</span></div>` : ''}`;
 };
 
 function render(){
